@@ -63,7 +63,7 @@ try {
 
                 if ($click_data) {
                     $aff_id = (int)$click_data['affid'];
-                    $restore_amount = getAffiliateBonusAmount($pdo, $aff_id);
+                    $restore_amount = $dispute_amount * 0.50;
 
                     if ($restore_amount > 0) {
                         $pdo->prepare("UPDATE `affiliates` SET `balance` = `balance` + ? WHERE `id` = ?")
@@ -104,7 +104,7 @@ try {
 
                 if ($click_data) {
                     $aff_id = (int)$click_data['affid'];
-                    $rev_payout_deduction = getAffiliateBonusAmount($pdo, $aff_id);
+                    $rev_payout_deduction = $dispute_amount * 0.50;
 
                     if ($rev_payout_deduction > 0) {
                         $pdo->prepare("UPDATE `affiliates` SET `balance` = `balance` - ? WHERE `id` = ?")

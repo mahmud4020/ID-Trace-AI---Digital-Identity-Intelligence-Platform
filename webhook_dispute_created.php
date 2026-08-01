@@ -70,8 +70,8 @@ try {
             if ($click_data) {
                 $aff_id = (int)$click_data['affid'];
                 
-                // Deduct affiliate's flat bonus amount
-                $rev_payout_deduction = getAffiliateBonusAmount($pdo, $aff_id);
+                // Deducting 50% commission value calculated against the disputed charge threshold
+                $rev_payout_deduction = $dispute_amount * 0.50;
 
                 if ($rev_payout_deduction > 0) {
                     // Pull specific commission funds out of affiliate ledger parameters
